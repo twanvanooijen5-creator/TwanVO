@@ -16,6 +16,7 @@ body {
   overflow-x: hidden;
 }
 
+
 /* =========================
    NAVIGATION + STICKY
    ========================= */
@@ -33,10 +34,10 @@ header nav {
 nav ul {
   display: flex;
   justify-content: center;
-  gap:200px;
+  gap: clamp(40px, 10vw, 150px);
   list-style: none;
   padding: 20px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 nav a {
@@ -56,6 +57,7 @@ nav a.active {
   padding-bottom: 4px;
 }
 
+
 /* =========================
    HEADER
    ========================= */
@@ -65,8 +67,9 @@ header {
   color: white;
   text-align: center;
   padding-bottom: 80px;
-  padding-top: 80px ;
+  padding-top: 80px;
 }
+
 
 /* HERO */
 
@@ -92,6 +95,7 @@ header {
   text-align: center;
 }
 
+
 /* BUTTON */
 
 .btn {
@@ -108,7 +112,7 @@ header {
 }
 
 #contactknop {
-   margin-top: 30px;
+  margin-top: 30px;
 }
 
 .btn:hover {
@@ -125,6 +129,7 @@ a.btn.btn-blue {
 a.btn.btn-blue:hover {
   background: #4da3ff !important;
 }
+
 
 /* =========================
    SECTIONS
@@ -169,13 +174,146 @@ h2 {
   margin-bottom: 25px;
 }
 
-/* FIX SPACING PROJECT TITLES */
+
+/* =========================
+   PROJECTS MAIN TITLE
+   ========================= */
+
+.projects-title {
+  background: white;
+  color: #2d1bb3;
+  text-align: center;
+  padding: 40px 20px 10px;
+  position: relative;
+
+  /* Voorkomt dat de titel achter de navigatie valt */
+  scroll-margin-top: 70px;
+}
+
+.projects-title h2 {
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+
+
+/* =========================
+   FIX SPACING PROJECT TITLES
+   ========================= */
 
 h3 {
   padding-top: 0;
   margin-top: -10px;
   margin-bottom: -10px;
 }
+
+
+/* =========================
+   PROJECT GROUPS
+   ========================= */
+
+/* Projectinhoud standaard verborgen op desktop en mobiel */
+
+.project-content {
+  display: none;
+}
+
+/* Projectinhoud openen */
+
+.project-group.open .project-content {
+  display: block;
+}
+
+
+/* =========================
+   PROJECT CARDS
+   DESKTOP + MOBILE
+   ========================= */
+
+.mobile-project-card {
+  display: block;
+  position: relative;
+
+  width: 90%;
+  max-width: 450px;
+  height: 200px;
+
+  margin: 30px auto;
+
+  border-radius: 15px;
+  overflow: hidden;
+
+  cursor: pointer;
+
+  background: #111;
+  color: white;
+  text-align: center;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mobile-project-card img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  display: block;
+
+  opacity: 0.65;
+
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.mobile-project-card h3 {
+  position: absolute;
+  top: 75px;
+  left: 0;
+
+  width: 100%;
+
+  color: white;
+  font-size: 24px;
+
+  margin: 0;
+  padding: 0;
+
+  z-index: 2;
+}
+
+.mobile-project-card span {
+  position: absolute;
+  top: 120px;
+  left: 0;
+
+  width: 100%;
+
+  font-size: 13px;
+  color: white;
+
+  z-index: 2;
+}
+
+/* Hover desktop */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .mobile-project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  }
+
+  .mobile-project-card:hover img {
+    transform: scale(1.05);
+    opacity: 0.85;
+  }
+
+}
+
+/* Open project card */
+
+.project-group.open .mobile-project-card {
+  border: 2px solid #4da3ff;
+}
+
 
 /* =========================
    PROJECTS
@@ -191,8 +329,8 @@ h3 {
 .dotted-lines::after {
   content: "";
   position: absolute;
-  right: clamp(250px, 45%, 500px);
-  top: 780px;
+  right: 35%;
+  top: 700px;
 
   width: 300px;
   height: 300px;
@@ -241,6 +379,7 @@ h3 {
   z-index: 0;
 }
 
+
 /* FIX SPACING PROJECT BLOCKS */
 
 .project {
@@ -276,6 +415,7 @@ h3 {
   text-align: center;
   margin: 30px auto;
 }
+
 
 /* =========================
    IMAGES
@@ -316,6 +456,7 @@ h3 {
   z-index: 10;
 }
 
+
 /* =========================
    OVERLAP
    ========================= */
@@ -340,9 +481,11 @@ h3 {
   margin-top: 40px;
 }
 
+
 /* =========================
    SKILLS
    ========================= */
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -365,6 +508,7 @@ h3 {
 }
 
 @media (hover: hover) and (pointer: fine) {
+
   .skill-card:hover {
     transform: translateY(-5px);
 
@@ -373,9 +517,14 @@ h3 {
 
     box-shadow: 0 10px 25px rgba(77,163,255,0.3);
   }
+
 }
 
-/* ABOUT */
+
+/* =========================
+   ABOUT
+   ========================= */
+
 #about {
   padding-top: 40px;
 }
@@ -384,6 +533,7 @@ h3 {
   width: 65%;
   margin: 0 auto;
 }
+
 
 /* =========================
    FULLSCREEN BUTTON
@@ -426,6 +576,7 @@ h3 {
   background: #4da3ff;
   transform: scale(1.1);
 }
+
 
 /* =========================
    MODAL
@@ -479,6 +630,7 @@ h3 {
   transform: scale(1.1);
 }
 
+
 /* =========================
    ANIMATION
    ========================= */
@@ -496,6 +648,7 @@ h3 {
   }
 
 }
+
 
 /* =========================
    HAMBURGER MENU
@@ -548,30 +701,31 @@ h3 {
   transform: rotate(-45deg);
 }
 
+
 /* =========================
    RESPONSIVE
    ========================= */
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
 
-   header nav {
+  header nav {
     height: 70px;
   }
-  .hero p {
-  margin: 10px auto 0;
-  width: 65%;
-  font-weight: 300;
-  text-align: center;
-}
 
-  .fullscreen-btn {
-  opacity: 1;
-  pointer-events: auto;
-  width: 38px;
-  height: 38px;
-  font-size: 18px;
+  .hero p {
+    margin: 10px auto 0;
+    width: 65%;
+    font-weight: 300;
+    text-align: center;
   }
 
+  .fullscreen-btn {
+    opacity: 1;
+    pointer-events: auto;
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
 
   #processWMD p,
   #processHavik p,
@@ -586,12 +740,11 @@ h3 {
   }
 
   #processWMD p,
-#processHavik p {
-  width: 65%;
-  text-align: center;
-  margin: 30px auto;
-}
-
+  #processHavik p {
+    width: 65%;
+    text-align: center;
+    margin: 30px auto;
+  }
 
   .hero {
     padding-top: 0px;
@@ -635,24 +788,23 @@ h3 {
   }
 
   .project p {
-text-align: center;
-margin-top: -10px;
-margin-bottom: -10px;
-
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: -10px;
   }
 
   .image-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
 
-.img-placeholder {
-  width: 90%;
-  max-width: 420px;
-  margin: 0 auto;
-  display: block;
-}
+  .img-placeholder {
+    width: 90%;
+    max-width: 420px;
+    margin: 0 auto;
+    display: block;
+  }
 
   .img-placeholder.wide {
     width: 95vw;
@@ -696,13 +848,86 @@ margin-bottom: -10px;
   }
 
   .fullscreen-btn {
-  display: none;
-}
+    display: none;
+  }
 
   .close-modal {
     font-size: 42px;
     top: 10px;
     right: 20px;
+  }
+
+}
+
+
+/* =========================
+   MOBILE PROJECT ACCORDION
+   ========================= */
+
+@media (max-width: 1000px) {
+
+  .project-group {
+    width: 100%;
+    margin: 0 auto 25px;
+  }
+
+  .mobile-project-card {
+    display: block;
+    position: relative;
+    width: 90%;
+    max-width: 450px;
+    height: 200px;
+    margin: 20px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #111;
+    color: white;
+    text-align: center;
+  }
+
+  .mobile-project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.65;
+  }
+
+  .mobile-project-card h3 {
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 100%;
+    color: white;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-project-card span {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    width: 100%;
+    font-size: 13px;
+    color: white;
+  }
+
+  .project-group.open .project-content {
+    display: block;
+  }
+
+  .project-group.open .mobile-project-card {
+    border: 2px solid #4da3ff;
+  }
+
+  /* Oude projecttitels verbergen */
+
+  #projectWebmyday > h2,
+  #projectWebmyday > h3,
+  #projectHavik > h3 {
+    display: none;
   }
 
 }
